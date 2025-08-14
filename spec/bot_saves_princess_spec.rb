@@ -4,7 +4,6 @@ require './lib/grid'
 describe Grid do
   before(:each) do
     @grid1 = Grid.new(3, ["---", "-m-", "--p"])
-    # @grid2 = Grid.new(6, ["-----p", "------", "--m---", "------", "------", "------"])
   end
 
   it 'exists and has attributes' do
@@ -17,15 +16,11 @@ describe Grid do
     expect(@grid1.p_location).to eq([2, 2])
   end
 
+  it 'can calculate difference in coords' do
+    expect(@grid1.coord_difference).to eq([-1, -1])
+  end
+
   it 'can calculate and print winning moves' do
     expect(@grid1.winning_moves).to eq(["DOWN", "RIGHT"])
   end
-
-  # it 'can locate m if grid num is even' do
-
-  # end
-
-  # it 'can calculate and print winning moves if grid num is even' do
-
-  # end
 end
