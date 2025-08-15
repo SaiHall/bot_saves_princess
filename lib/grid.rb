@@ -1,7 +1,7 @@
 require "pry"
 
 class Grid
-  attr_reader :p_location, :grid, :n
+  attr_reader :p_location, :m_location, :grid, :n
 
   def initialize(n, r = false, c = false, grid)
     @grid = grid
