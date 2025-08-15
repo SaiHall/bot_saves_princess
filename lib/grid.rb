@@ -3,11 +3,11 @@ require "pry"
 class Grid
   attr_reader :p_location, :grid, :n
 
-  def initialize(n, grid)
+  def initialize(n, r = false, c = false, grid)
     @grid = grid
     @n = n
     @p_location = locate_char("p")
-    @m_location = locate_char("m")
+    @m_location = bot_location(r, c)
     @coord_diff = coord_difference()
   end
 
@@ -31,5 +31,9 @@ class Grid
     @coord_diff[0].negative? ? @coord_diff[0].abs.times {winning_array.push("DOWN")} : @coord_diff[0].times {winning_array.push("UP")}
     @coord_diff[1].negative? ? @coord_diff[1].abs.times {winning_array.push("RIGHT")} : @coord_diff[1].times {winning_array.push("LEFT")}
     return winning_array
+  end
+
+  def bot_location(r, c)
+    r == false ? locate_char('m') : [r, c]
   end
 end
