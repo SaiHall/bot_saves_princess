@@ -7,6 +7,12 @@ describe Grid do
     @grid2 = Grid.new(9, 0, 0, ["m--------\n", "---------\n", "---------\n", "---------\n", "---------\n", "---------\n", "---------\n", "---------\n", "--------p"])
     @grid3 = Grid.new(9, ["m--------\n", "---------\n", "---------\n", "---------\n", "---------\n", "---------\n", "---------\n", "---------\n", "p--------"])
     @grid4 = Grid.new(7, 6, 6, ["p------\n", "-------\n", "-------\n", "-------\n", "-------\n", "-------\n", "------m\n"])
+    largest_string = "---------------------------------------------------------------------------------------------------"
+    largest_array = []
+    99.times {largest_array.push(largest_string)}
+    largest_array[0] = "m--------------------------------------------------------------------------------------------------"
+    largest_array[98] = "--------------------------------------------------------------------------------------------------p"
+    @grid5 = Grid.new(99, 0, 0, largest_array)
   end
 
   it 'exists and has attributes' do
@@ -39,5 +45,19 @@ describe Grid do
   it 'can locate m with or without provided coords' do
     expect(@grid1.m_location).to eq([0, 1])
     expect(@grid3.m_location).to eq([0, 0])
+  end
+
+  it 'will work as expected at max size' do
+    expect(@grid5.m_location).to eq([0, 0])
+    expect(@grid5.p_location).to eq([98, 98])
+    expect(@grid5.coord_difference).to eq([-98, -98])
+
+    moves = @grid5.winning_moves
+
+    expect(moves.length).to eq(196)
+    expect(moves.include?("DOWN")).to eq(true)
+    expect(moves.include?("UP")).to eq(false)
+    expect(moves.include?("RIGHT")).to eq(true)
+    expect(moves.include?("LEFT")).to eq(false)
   end
 end

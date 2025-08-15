@@ -8,7 +8,7 @@ class Grid
     @n = n
     @p_location = locate_char("p")
     @m_location = bot_location(r, c)
-    @coord_diff = coord_difference()
+    @coord_diff = coord_difference
   end
 
   def locate_char(char)
