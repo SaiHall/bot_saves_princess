@@ -1,6 +1,7 @@
 require 'Rspec'
 require './lib/grid'
 
+# make tests more robust
 describe Grid do
   before(:each) do
     @grid1 = Grid.new(3, ["---", "-m-", "--p"])

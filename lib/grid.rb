@@ -12,7 +12,9 @@ class Grid
   end
 
   def locate_char(char)
+    # finding row provided character is in
     row_index = @grid.index {|row| row.include?(char)}
+    # finding column of character within row
     col_index = @grid[row_index].index(char)
     [row_index, col_index]
   end
@@ -25,8 +27,9 @@ class Grid
 
   def winning_moves
     winning_array = []
+    # using difference between two sets of coords to determine direction needed to get to princess
     @coord_diff[0].negative? ? @coord_diff[0].abs.times {winning_array.push("DOWN")} : @coord_diff[0].times {winning_array.push("UP")}
-    @coord_diff[0].negative? ? @coord_diff[1].abs.times {winning_array.push("RIGHT")} : @coord_diff[0].times {winning_array.push("LEFT")}
+    @coord_diff[1].negative? ? @coord_diff[1].abs.times {winning_array.push("RIGHT")} : @coord_diff[1].times {winning_array.push("LEFT")}
     return winning_array
   end
 end
