@@ -1,5 +1,3 @@
-require "pry"
-
 class Grid
   attr_reader :p_location, :m_location, :grid, :n
 
@@ -12,9 +10,9 @@ class Grid
   end
 
   def locate_char(char)
-    # finding row provided character is in
+    # finding row provided character is in within grid array
     row_index = @grid.index {|row| row.include?(char)}
-    # finding column of character within row
+    # finding column of character within single row, row is string
     col_index = @grid[row_index].index(char)
     [row_index, col_index]
   end
@@ -34,6 +32,7 @@ class Grid
   end
 
   def bot_location(r, c)
+    # if values provided in args, using provided location. If not, finding m in grid
     r == false ? locate_char('m') : [r, c]
   end
 end

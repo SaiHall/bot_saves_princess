@@ -19,6 +19,7 @@ describe Grid do
       expect(@grid1).to be_an_instance_of(Grid)
       expect(@grid1.grid).to eq(["-m---\n", "-----\n", "---p-\n", "-----\n", "-----"])
       expect(@grid1.n).to eq(5)
+      expect(@grid1.m_location).to eq([0, 1])
   end
 
   it 'can locate p' do
